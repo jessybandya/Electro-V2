@@ -1,0 +1,140 @@
+.card_main {
+    background: #D1D1D1;
+    border-radius: 10px;
+    overflow: hidden;
+    max-width: 260px;
+    padding-bottom: 20px;
+    margin: 15px 10px;
+  }
+  
+.card_main .card_main_img {
+    max-width: 100%;
+    object-fit: cover;
+  }
+  
+
+  
+.card_main .card_main_name h2 {
+    color: #252041;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 5px;
+  }
+  
+
+  
+    .card_main
+    .card_main_name
+    .card_main_icon
+    i
+    span {
+    color: #e9e9ec;
+    margin-left: 5px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+.card_main .stat {
+    columns: 2;
+    gap: 1em;
+    padding: 5px 10px;
+    text-align: center;
+    column-rule: 1px solid #adabb8;
+    margin: 15px 0;
+  }
+.card_main .stat p {
+    font-size: 12px;
+    font-weight: bold;
+    color: #adabb8;
+  }
+  
+.card_main .stat p span {
+    display: block;
+    color: #b1147d;
+  }
+  
+.card_main .card_main_button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+.card_main .card_main_button .btn {
+    font-size: 10px !important;
+  }
+  
+  .maincontainer .right {
+    width: calc(100% - 70%);
+    padding: 0px 10px;
+    padding-left: 20px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  .maincontainer .right .topCard,
+  .maincontainer .right .bottom_card {
+    background: #19162c;
+    border-radius: 20px;
+    padding: 10px 20px;
+  }
+  
+  .maincontainer .right .topCard .topCard_name,
+  .maincontainer .right .bottom_card .bottomCard_name {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .maincontainer .right .bottom_card .bottomCard_name {
+    margin-bottom: 15px;
+  }
+  
+  .maincontainer .right .topCard .topCard_name h2,
+  .maincontainer .right .bottom_card .bottomCard_name h2 {
+    color: #d1d0d5;
+  }
+  
+  .maincontainer .right .topCard .topCard_name a,
+  .maincontainer .right .bottom_card .bottomCard_name a {
+    color: #b1147d;
+  }
+  
+  .maincontainer .right .topCard .earning {
+    width: 100%;
+    padding: 5px 10px;
+  }
+  
+
+  
+
+  
+ 
+  
+  .maincontainer .right .bottom_card .topSeller .topSellerName span {
+    display: block;
+    font-size: 12px;
+  }
+  
+  .maincontainer .right .bottom_card .topSeller .button {
+    margin-left: auto;
+    font-size: 10px;
+  }
+  
+  @media screen and (max-width: 525px) {
+
+  
+  .card_main {
+      max-width: 325px;
+    }
+
+  }
+  
+  @media only screen and (min-width: 525px) and (max-width: 950px) {
+
+  
+  .card_main {
+      max-width: 230px;
+      margin: 20px 5px;
+    }
+
+  }
+  
