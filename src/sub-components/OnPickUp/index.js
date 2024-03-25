@@ -232,17 +232,6 @@ const history = useNavigate()
 
   const addOrder = () => {
 
-    db.collection("orders").add({
-      uid:authId,
-      updatedBy:authId,
-      total:totalPrice,
-      deliveryAddress:homeAddress,
-      paymentType:'cash',
-      isPaid:false,
-      updatedOn:selectedDate,
-      items:cartCtx.items
-    })
-    
     db.collection("users").doc(authId).collection("orders").add({
       uid:authId,
       updatedBy:authId,
@@ -251,7 +240,8 @@ const history = useNavigate()
       paymentType:'cash',
       isPaid:false,
       updatedOn:selectedDate,
-      items:cartCtx.items
+      items:cartCtx.items,
+      timestamp: Date.now()
     })
     history("/")
     swal("Your order has been sent!\nThanks for shopping with Us ✔️!")

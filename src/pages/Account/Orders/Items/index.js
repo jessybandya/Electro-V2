@@ -28,7 +28,7 @@ function Items({ deliveryAddress, items, paymentType, total, uid, updatedBy, upd
     const handleShow = () => setShow(true);
     const deleteOrder = () =>{
         if(window.confirm("Are you sure you want to delete this order?")){
-            db.collection("orders").doc(orderId).delete().then(function() {
+          db.collection("users").doc(uid).collection("orders").doc(orderId).delete().then(function() {
             }).catch(function(error) {
                 toast.error("Error removing order: ", error);
             }); 

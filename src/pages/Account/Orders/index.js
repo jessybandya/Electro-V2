@@ -8,7 +8,7 @@ function Orders({  }) {
     const authId = useSelector((state) => state.authId)
  
     useEffect(() => {
-      db.collection('users').doc(`${authId}`).collection('orders').onSnapshot(snapshot => {
+      db.collection('users').doc(`${authId}`).collection('orders').orderBy('timestamp', 'desc').onSnapshot(snapshot => {
         setPosts(snapshot.docs.map(doc => ({
               id: doc.id,
               post: doc.data(),

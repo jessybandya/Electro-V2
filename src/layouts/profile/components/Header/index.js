@@ -43,7 +43,7 @@ import burceMars from "../../../../assets/images/bruce-mars.jpg";
 import curved0 from "../../../../assets/images/curved-images/curved0.jpg";
 
 
-function Header({ countArtcles, firstName, lastName, profilePhoto }) {
+function Header({ countArtcles, firstName, lastName, profilePhoto, ordersNum }) {
   const [tabsOrientation, setTabsOrientation] = useState("horizontal");
   const [tabValue, setTabValue] = useState(0);
 
@@ -160,7 +160,7 @@ function Header({ countArtcles, firstName, lastName, profilePhoto }) {
                 style={{zIndex:1,backgroundColor:'#fff'}}
 
               >
-                <Tab label={`My orders ${abbrNum(countArtcles,1)}`} icon={<Document />} />
+                <Tab label={`My orders ${abbrNum(ordersNum.length,1)}`} icon={<Document />} />
               </Tabs>
             </AppBar>
           </Grid>

@@ -187,17 +187,6 @@ console.log("Your Cart: ",cartCtx)
 
 const addOrder = () => {
 
-db.collection("orders").add({
-  uid:authId,
-  updatedBy:authId,
-  total:totalPrice,
-  deliveryAddress:homeAddress,
-  paymentType:'cash',
-  isPaid:false,
-  updatedOn:selectedDate,
-  items:cartCtx.items
-})
-
 db.collection("users").doc(authId).collection("orders").add({
   uid:authId,
   updatedBy:authId,
@@ -206,13 +195,22 @@ db.collection("users").doc(authId).collection("orders").add({
   paymentType:'cash',
   isPaid:false,
   updatedOn:selectedDate,
-  items:cartCtx.items
+  items:cartCtx.items,
+  timestamp: Date.now()
 })
 history("/")
-swal("Your order has been sent!\nThanks for shopping with Us ✔️!")
-window.localStorage.removeItem('Python1');
-window.localStorage.removeItem('Python');
-window.location.reload();
+swal({
+  title: "Your order has been sent!",
+  text: "Thanks for shopping with Us ✔️!",
+  icon: "success",
+  button: "OK",
+}).then((value) => {
+  if (value) {
+    window.localStorage.removeItem('Python1');
+    window.localStorage.removeItem('Python');
+    window.location.reload();
+  }
+});
 }
 
 function numberWithCommas(x) {
@@ -249,36 +247,15 @@ function numberWithCommas(x) {
                             </p>
                             <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Search Location</Modal.Title>
+          <Modal.Title>Location</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {!homeAddress ?(
-            <>
-            <GooglePlacesAutocomplete
-   apiKey={''}
-   selectProps={{
-   placeholder: 'Choose address...',
-   name:"address",
-   inputValue:inputFieldHome['address'],
-   onInputChange : (e)=>{setInputFieldHome({...inputFieldHome, ['address']: e})},
-   onChange:(place) => {handleHomeLatLong(place.label); setErrorAddressHome(false);}
-   }}
-/>
-            </>
-          ):(
-            <>
-            <GooglePlacesAutocomplete
-   apiKey={''}
-   selectProps={{
-   placeholder:`${homeAddress}`,
-   name:"address",
-   inputValue:inputFieldHome['address'],
-   onInputChange : (e)=>{setInputFieldHome({...inputFieldHome, ['address']: e})},
-   onChange:(place) => {handleHomeLatLong(place.label); setErrorAddressHome(false);}
-   }}
-/>
-            </>
-          )}
+        <input 
+        placeholder='Type location address...'
+        value={homeAddress}
+        style={{width:'100%'}}
+        onChange={(e)=>setHomeAddress(e.target.value)}
+        />
         
         </Modal.Body>
         <Modal.Footer>
@@ -605,7 +582,7 @@ function numberWithCommas(x) {
               style={{width:"100%",marginTop:15}}
           id="outlined-read-only-input"
           label="Address Of Delivery"
-          defaultValue={`${homeAddress}`}
+          value={`${homeAddress}`}
           InputProps={{
             readOnly: true,
             style: {

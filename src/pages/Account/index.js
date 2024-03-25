@@ -95,11 +95,13 @@ React.useEffect(() => {
       setData(snapshot.docs.map((doc) => doc.data()))
   })
 })
+
+console.log(data)
   return (
     <DashboardLayout>
     <DashboardNavbar />
     <SoftTypography>
-    <Header countArtcles={countArtcles} firstName={currentUser?.firstName} lastName={currentUser?.lastName} profilePhoto={currentUser?.profilePhoto}/>
+    <Header countArtcles={countArtcles} ordersNum={data} firstName={currentUser?.firstName} lastName={currentUser?.lastName} profilePhoto={currentUser?.profilePhoto}/>
     <Box>
     <AppBar position="static">
       <Tabs
@@ -171,7 +173,6 @@ React.useEffect(() => {
   </Box>
 
     </SoftTypography>
-    <Footer/>
     </DashboardLayout>
   )
 }
